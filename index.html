@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <script src="jquery-3.2.1.js"></script>
+  <title>Jquery partie 4</title>
+</head>
+<body>
+  <form action="index.html" method="post">
+    <label>Nom :</label><input type="text" name="lastName" placeholder="Nom" id="lastName" /></p>
+    <label>Prénom : </label><input type="text" name="firstName" placeholder="Prénom" id="firstName" /></p>
+    <label>Adresse mail : </label><input type="mail" name="mail" placeholder="ex : jean.dupont@sfr.fr" id="mail" /></p>
+    <label>Numéro de téléphone : </label><input type="text" name="phoneNumber" placeholder="ex : 0356987410" id="phoneNumber" /></p>
+  </form>
+  <button type="button" name="button">valider</button>
+  <script>
+  $(function(){
+    $('button').click(function(){
+      var lastName = $('#lastName').val();
+      var firstName = $('#firstName').val();
+      var mail = $('#mail').val();
+      var phoneNumber = $('#phoneNumber').val();
+      var regexText = /^[a-zA-Z-]+$/;
+      var regexMail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;//^(06/07)[0-9]{8}$
+      var regexTel = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
+      if((regexText.test(lastName)==true) && (regexText.test(firstName)==true) && (regexMail.test(mail)==true) && (regexTel.test(phoneNumber)==true)){
+        alert('Le formulaire est bien rempli');
+      }else if(regexText.test(lastName)==false){
+        alert('Veuillez sasir un nom valide');
+      }else if(regexText.test(firstName)==false){
+        alert('Veuillez sasir un prénom valide');
+      }else if(regexMail.test(mail)==false){
+        alert('Veuillez sasir une adresse mail valide');
+      }else if(regexTel.test(phoneNumber)==false){
+        alert('Veuillez sasir un numéro de téléphone valide');
+      }
+    });
+  });
+</script>
+</body>
+</html>
